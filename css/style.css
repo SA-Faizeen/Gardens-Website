@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap');
+
+/* CSS variables for easy control of the color palette */
+:root {
+  --primary-color: #f7f7f7;
+  --text-color: #272727;
+  --brand-color: #22c55e;
+  --border-color: #b3b3b3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Poppins, 'Segoe UI', sans-serif;
+  color: var(--color-neutral-900);
+  scroll-behavior: smooth;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+body {
+  /* dvh = dynamic viewport height, 100vh is used as a fallback in case browsers dont support dvh */
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--primary-color);
+}
+
+main {
+  padding: min(5em, 7%);
+  /* 1em = ~16px, depends on the element's font size */
+}
+
+main p {
+  margin-top: .35em;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.1em;
+  padding-left: 1em;
+  text-decoration: none;
+  color: var(--text-color);
+  font-family: 'Pridi', serif;
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
+}
+
+.logo i {
+  font-size: 2rem;
+  color: var(--brand-color);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li a {
+  display: inline-block;
+  color: var(--text-color);
+  padding: 1em 1em;
+  text-decoration: none;
+	transition: all 150ms ease;
+}
+
+nav ul li a:hover {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+.active-link {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+#open-sidebar-button {
+  display: none;
+  background: none;
+  border: none;
+  padding: 1em;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+#close-sidebar-button {
+  display: none;
+  background: none;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+}
+
+#overlay {
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: none;
+}
+
+.search-li input[type="search"] {
+  padding: 1em 2em;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 800px) {
+  #open-sidebar-button {
+    display: block;
+    z-index: 10;
+  }
+
+  #close-sidebar-button {
+    display: block;
+  }
+
+  .logo {
+    position: static;
+    padding: 0 1em;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: min(15em, 100%);
+    z-index: 100;
+    border-left: 1px solid var(--border-color);
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    transition: right 300ms;
+  }
+
+  nav ul.show {
+    right: 0;
+  }
+
+  nav ul.show ~ #overlay {
+    display: block; 
+  }
+
+  nav ul li a {
+    padding: 1em 1.5em;
+    width: 100%;
+    padding-left: 2.5em;
+  }
+
+  main {
+    padding-top: min(5em, 7%);
+  }
+
+  nav .home-li {
+    margin-right: unset;
+  }
+}
