@@ -1,11 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap");
 
-/* CSS variables for easy control of the color palette */
 :root {
-  --primary-color: #f7f7f7;
-  --text-color: #272727;
+  --bg-primary: #f7f7f7;
+  --text-primary: #272727;
+  --text-muted: #6b7280;
   --brand-color: #22c55e;
+  --brand-color-dark: #16a34a;
   --border-color: #b3b3b3;
+  --nav-bg: rgba(255, 255, 255, 0.25);
+  --nav-text: #1f2937;
+  --hero-overlay: linear-gradient(
+    135deg,
+    rgba(247, 247, 247, 0.75),
+    rgba(220, 220, 220, 0.85)
+  );
+  --btn-sec-bg: rgba(255, 255, 255, 0.65);
+  --btn-sec-text: #272727;
+  --btn-sec-border: rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --text-primary: #ffffff;
+  --text-muted: #94a3b8;
+  --brand-color: #4ade80;
+  --brand-color-dark: #22c55e;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(15, 23, 42, 0.45);
+  --nav-text: #ffffff;
+  --hero-overlay: linear-gradient(
+    135deg,
+    rgba(22, 163, 74, 0.75),
+    rgba(15, 23, 42, 0.85)
+  );
+  --btn-sec-bg: rgba(255, 255, 255, 0.15);
+  --btn-sec-text: #ffffff;
+  --btn-sec-border: rgba(255, 255, 255, 0.4);
 }
 
 * {
@@ -15,9 +45,19 @@
   box-sizing: border-box;
 }
 
+*,
+*::before,
+*::after {
+  transition:
+    background-color 400ms ease,
+    color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
 html {
-  font-family: Poppins, 'Segoe UI', sans-serif;
-  color: var(--color-neutral-900);
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: var(--text-primary);
   scroll-behavior: smooth;
 }
 
@@ -27,32 +67,57 @@ ol {
 }
 
 body {
-  /* dvh = dynamic viewport height, 100vh is used as a fallback in case browsers dont support dvh */
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--primary-color);
-}
-
-main {
-  padding: min(5em, 7%);
-  /* 1em = ~16px, depends on the element's font size */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 main p {
-  margin-top: .35em;
+  margin-top: 0.35em;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--nav-bg);
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition:
+    background 300ms ease,
+    border-color 300ms ease;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.1em;
-  padding-left: 1em;
+  gap: 0.2em;
   text-decoration: none;
-  color: var(--text-color);
-  font-family: 'Pridi', serif;
+  color: var(--text-primary);
+  font-family: "Pridi", serif;
   font-weight: 600;
   font-size: 1.5em;
   letter-spacing: 0.05em;
+  transition: color 300ms ease;
 }
 
 .logo i {
@@ -60,85 +125,135 @@ main p {
   color: var(--brand-color);
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--primary-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
 nav ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 0.5rem;
+  position: static;
+  height: auto;
+  width: auto;
+  background-color: transparent;
 }
 
 nav ul li a {
   display: inline-block;
-  color: var(--text-color);
-  padding: 1em 1em;
+  color: var(--nav-text);
+  padding: 0.75em 1em;
   text-decoration: none;
-	transition: all 150ms ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 300ms ease;
+
+  &:hover {
+    color: var(--brand-color);
+  }
 }
 
-nav ul li a:hover {
-  background-color: var(--brand-color);
-  color: white;
+#hero {
+  background: var(--hero-overlay), url("../images/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.active-link {
-  background-color: var(--brand-color);
-  color: white;
+.hero-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-#open-sidebar-button {
-  display: none;
-  background: none;
+#hero h1 {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  max-width: 50rem;
+  width: 100%;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  transition: color 300ms ease;
+
+  & .accent {
+    color: var(--brand-color);
+  }
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   border: none;
-  padding: 1em;
-  margin-top: 5px;
   cursor: pointer;
+  transition-property: scale, filter, border, background-color, color;
+  transition-duration: 300ms;
+  scale: 1;
+
+  &:hover {
+    filter: brightness(1.1);
+    scale: 1.05;
+  }
+  &:active {
+    filter: brightness(0.95);
+    scale: 0.95;
+  }
 }
 
+.btn-primary {
+  background: var(--brand-color-dark);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--btn-sec-bg);
+  color: var(--btn-sec-text);
+  border: 1px solid var(--btn-sec-border);
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    border: 1px solid var(--brand-color);
+  }
+}
+
+#open-sidebar-button,
 #close-sidebar-button {
   display: none;
   background: none;
   border: none;
-  padding: 1em;
+  padding: 0.5em;
   cursor: pointer;
 }
 
 #overlay {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   inset: 0;
-  z-index: 9;
+  z-index: 40;
   display: none;
 }
 
-.search-li input[type="search"] {
-  padding: 1em 2em;
-  width: 100%;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+#overlay.show {
+  display: block;
 }
 
 @media screen and (max-width: 800px) {
-  #open-sidebar-button {
-    display: block;
-    z-index: 10;
-  }
-
+  #open-sidebar-button,
   #close-sidebar-button {
     display: block;
-  }
-
-  .logo {
-    position: static;
-    padding: 0 1em;
   }
 
   nav ul {
@@ -149,32 +264,26 @@ nav ul li a:hover {
     width: min(15em, 100%);
     z-index: 100;
     border-left: 1px solid var(--border-color);
-    background-color: var(--primary-color);
+    background-color: var(--bg-primary);
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    transition: right 300ms;
+    padding-top: 1rem;
+    transition: right 300ms ease;
   }
 
   nav ul.show {
     right: 0;
   }
 
-  nav ul.show ~ #overlay {
-    display: block; 
-  }
-
   nav ul li a {
     padding: 1em 1.5em;
     width: 100%;
     padding-left: 2.5em;
+    color: var(--text-primary);
   }
 
-  main {
-    padding-top: min(5em, 7%);
-  }
-
-  nav .home-li {
-    margin-right: unset;
+  nav ul li a:hover {
+    color: var(--brand-color);
   }
 }
