@@ -11,7 +11,7 @@
   --brand-color: light-dark(#22c55e, #4ade80);
   --brand-color-dark: light-dark(#16a34a, #22c55e);
   --border-color: light-dark(#e5e7eb, rgba(255, 255, 255, 0.1));
-  --nav-bg: light-dark(rgba(247, 247, 247, 0.85), rgba(30, 41, 59, 0.85));
+  --nav-bg: light-dark(rgba(247, 247, 247, 0.35), rgba(30, 41, 59, 0.35));
   --nav-text: light-dark(#1f2937, #ffffff);
   --hero-overlay: light-dark(
     linear-gradient(135deg, rgba(247, 247, 247, 0.75), rgba(220, 220, 220, 0.85)),
@@ -98,7 +98,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  /* background: var(--nav-bg); */
+  background: var(--nav-bg);
   z-index: 50;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
