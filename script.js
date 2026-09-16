@@ -18,6 +18,11 @@ function applyTheme(theme) {
   }
 }
 
+// Sync the icon with whatever theme the anti-flash script in <head> already
+// applied to <html> — that script runs before this icon element exists,
+// so it can set data-theme/colorScheme but never touch #theme-icon.
+applyTheme(document.documentElement.getAttribute("data-theme") || "light");
+
 function toggleTheme() {
   const currentTheme =
     document.documentElement.getAttribute("data-theme") || "light";

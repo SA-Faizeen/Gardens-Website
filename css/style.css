@@ -300,7 +300,7 @@ nav ul li a {
   transition: transform 0.3s ease;
 }
 
-.card:hover .card-img img {
+.card-img:hover img {
   transform: scale(1.05);
 }
 
