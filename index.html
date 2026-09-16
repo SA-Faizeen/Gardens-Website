@@ -3,62 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gardens</title>
+    <title>Gardens - Grow Your Own Garden</title>
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body data-theme="light">
-    <!-- Overlay moved here so it covers the entire viewport properly -->
+  <body>
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
 
     <header>
       <nav class="container">
-        <div class="logo">
+        <a href="#" class="logo">
           <i class="ti ti-leaf"></i>
           <span>GARDENS</span>
-        </div>
-        <button
-          id="open-sidebar-button"
-          onclick="openSidebar()"
-          aria-label="open sidebar"
-          aria-expanded="false"
-          aria-controls="navbar">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="40px"
-            viewBox="0 -960 960 960"
-            width="40px"
-            fill="#272727">
-            <path
-              d="M153.33-240q-14.16 0-23.75-9.62-9.58-9.61-9.58-23.83 0-14.22 9.58-23.72 9.59-9.5 23.75-9.5h653.34q14.16 0 23.75 9.62 9.58 9.62 9.58 23.83 0 14.22-9.58 23.72-9.59 9.5-23.75 9.5H153.33Zm0-206.67q-14.16 0-23.75-9.61-9.58-9.62-9.58-23.84 0-14.21 9.58-23.71 9.59-9.5 23.75-9.5h653.34q14.16 0 23.75 9.61 9.58 9.62 9.58 23.84 0 14.21-9.58 23.71-9.59 9.5-23.75 9.5H153.33Zm0-206.66q-14.16 0-23.75-9.62-9.58-9.62-9.58-23.83 0-14.22 9.58-23.72 9.59-9.5 23.75-9.5h653.34q14.16 0 23.75 9.62 9.58 9.61 9.58 23.83 0 14.22-9.58 23.72-9.59 9.5-23.75 9.5H153.33Z" />
-          </svg>
-        </button>
+        </a>
 
-        <ul id="navbar" aria-hidden="true">
-          <li>
-            <button id="close-sidebar-button" onclick="closeSidebar()">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="40px"
-                viewBox="0 -960 960 960"
-                width="40px"
-                fill="#272727">
-                <path
-                  d="M480-433.33 274.67-228q-9.67 9.67-23.34 9.67-13.66 0-23.33-9.67-9.67-9.67-9.67-23.33 0-13.67 9.67-23.34L433.33-480 228-685.33q-9.67-9.67-9.67-23.34 0-13.66 9.67-23.33 9.67-9.67 23.33-9.67 13.67 0 23.34 9.67L480-526.67 685.33-732q9.67-9.67 23.34-9.67 13.66 0 23.33 9.67 9.67 9.67 9.67 23.33 0 13.67-9.67 23.34L526.67-480 732-274.67q9.67 9.67 9.67 23.34 0 13.66-9.67 23.33-9.67 9.67-23.33 9.67-13.67 0-23.34-9.67L480-433.33Z" />
-              </svg>
-            </button>
-          </li>
-          <li class="home-li"><a href="#">Home</a></li>
-          <li><a href="#About">About Us</a></li>
-          <li><a href="#Boxes">Boxes</a></li>
-          <li><a href="#Advice">Activities</a></li>
-          <li><a href="#Contact">Contact Us</a></li>
-        </ul>
+        <div class="nav-right">
+          <button
+            id="open-sidebar-button"
+            onclick="openSidebar()"
+            aria-label="open sidebar"
+          >
+            <i class="ti ti-menu-2"></i>
+          </button>
+
+          <ul id="navbar">
+            <li class="mobile-only">
+              <button
+                id="close-sidebar-button"
+                onclick="closeSidebar()"
+                aria-label="close sidebar"
+              >
+                <i class="ti ti-x"></i>
+              </button>
+            </li>
+            <li class="home-li"><a href="#">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#boxes">Boxes</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+
+          <button
+            id="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Toggle dark mode"
+          >
+            <i class="ti ti-moon" id="theme-icon"></i>
+          </button>
+        </div>
       </nav>
     </header>
+
     <main>
+      <!-- Hero Section -->
       <section id="hero">
         <div class="container">
           <div class="hero-flex">
@@ -67,13 +79,276 @@
               <span class="accent">No Experience Needed</span>
             </h1>
             <div class="hero-buttons">
-              <button class="btn btn-primary">Shop Boxes</button>
-              <button class="btn btn-secondary">Get Advice</button>
+              <a href="#boxes" class="btn btn-primary">Shop Boxes</a>
+              <a href="#activities" class="btn btn-secondary">Get Advice</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">About Gardens</h2>
+          <p class="about-text">
+            At GARDENS, we believe that anyone can cultivate a thriving green
+            space, regardless of experience or location. Operating across
+            Europe, Asia, and New Zealand, we deliver thoughtfully curated
+            gardening boxes designed to make growing plants simple, accessible,
+            and rewarding. Whether you are looking to rescue surplus produce
+            with our Oddbox, build a seasonal garden with Flourish, or nurture
+            local biodiversity using our Cottage wildflower kits, our goal is to
+            bring the joy of gardening directly to your doorstep. Beyond our
+            boxes, we empower our global community with practical monthly
+            checklists, greenhouse guides, and interactive activities to help
+            your garden flourish year-round.
+          </p>
+        </div>
+      </section>
+
+      <!-- Boxes Offered Section -->
+      <section id="boxes" class="section-padding bg-alt">
+        <div class="container">
+          <h2 class="section-title">Boxes Offered</h2>
+          <div class="cards-grid">
+            <!-- Box Card 1 -->
+            <div class="card">
+              <div class="card-img">
+                <i class="ti ti-plant"></i>
+              </div>
+              <div class="card-content">
+                <h3>Oddbox</h3>
+                <p class="card-subtitle">Wonky veg rescued from supermarkets</p>
+                <p class="card-details">
+                  <strong>Step:</strong> Weekly veggies + veg seeds
+                </p>
+                <button class="btn btn-primary card-btn">Learn More</button>
+              </div>
+            </div>
+
+            <!-- Box Card 2 -->
+            <div class="card">
+              <div class="card-img">
+                <i class="ti ti-seeding"></i>
+              </div>
+              <div class="card-content">
+                <h3>Flourish</h3>
+                <p class="card-subtitle">1 box a year</p>
+                <p class="card-details">
+                  <strong>Seeds:</strong> Herbs, veg, flowers + extra seeds
+                </p>
+                <button class="btn btn-primary card-btn">Learn More</button>
+              </div>
+            </div>
+
+            <!-- Box Card 3 -->
+            <div class="card">
+              <div class="card-img">
+                <i class="ti ti-flower"></i>
+              </div>
+              <div class="card-content">
+                <h3>Cottage</h3>
+                <p class="card-subtitle">Monthly box</p>
+                <p class="card-details">
+                  <strong>All:</strong> Flower seeds, fact cards, instructions
+                </p>
+                <button class="btn btn-primary card-btn">Learn More</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Banner -->
+          <div class="cta-banner">
+            <p>
+              Custom boxes available for corporate subscriptions and gifts.
+              Contact us to arrange.
+            </p>
+            <a href="#contact" class="btn btn-primary banner-btn">Contact Us</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities Section -->
+      <section id="activities" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Activities</h2>
+          <div class="activities-grid">
+            <div class="activity-item">
+              <div class="activity-icon"><i class="ti ti-sun"></i></div>
+              <div>
+                <h4>Open Gardens</h4>
+                <p>Explore nearby community plots</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="ti ti-calendar"></i></div>
+              <div>
+                <h4>Monthly Checklist</h4>
+                <p>Seasonal tasks to keep you on track</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="ti ti-building-cottage"></i>
+              </div>
+              <div>
+                <h4>Greenhouse Tips</h4>
+                <p>Maximize year-round growth</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="ti ti-shovel"></i></div>
+              <div>
+                <h4>Garden Maintenance</h4>
+                <p>Pruning, soil health, & composting</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="ti ti-map-pin"></i></div>
+              <div>
+                <h4>Allotment Jobs</h4>
+                <p>Community patch guidelines</p>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon"><i class="ti ti-camera"></i></div>
+              <div>
+                <h4>Diary, Photos, Surveys</h4>
+                <p>Document your garden journey</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section id="contact" class="section-padding bg-alt">
+        <div class="container">
+          <h2 class="section-title">Contact Us</h2>
+          <div class="contact-grid">
+            <!-- Form -->
+            <form class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your Name" />
+                <span id="nameError" class="error-text" hidden
+                  >Please enter your name</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="hello@example.com" />
+                <span id="emailError" class="error-text" hidden
+                  >Please enter a valid email address</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Write your message here..."
+                ></textarea>
+                <span id="messageError" class="error-text" hidden
+                  >Please enter a message</span
+                >
+              </div>
+
+              <button
+                type="submit"
+                onclick="submitForm(event)"
+                class="btn btn-primary submit-btn"
+              >
+                Send Message <i class="ti ti-send"></i>
+              </button>
+            </form>
+
+            <!-- Details -->
+            <div class="contact-details">
+              <h3>Contact Details</h3>
+              <div class="contact-info-list">
+                <div class="contact-info-item">
+                  <div class="info-icon"><i class="ti ti-phone"></i></div>
+                  <div>
+                    <span class="info-label">Phone</span>
+                    <p>+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="info-icon"><i class="ti ti-mail"></i></div>
+                  <div>
+                    <span class="info-label">Email</span>
+                    <p>hello@gardens.com</p>
+                  </div>
+                </div>
+                <div class="contact-info-item">
+                  <div class="info-icon"><i class="ti ti-map-pin"></i></div>
+                  <div>
+                    <span class="info-label">Address</span>
+                    <p>123 Bloom Street, Garden City, CA 90210</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">What Our Gardeners Say</h2>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="user-info">
+                <div class="avatar"><i class="ti ti-user"></i></div>
+                <h4>Jamie R.</h4>
+              </div>
+              <p>
+                "I killed every plant before this. Now I have fresh basil every
+                week."
+              </p>
+            </div>
+            <div class="testimonial-card">
+              <div class="user-info">
+                <div class="avatar"><i class="ti ti-user"></i></div>
+                <h4>Sam T.</h4>
+              </div>
+              <p>"So easy to follow — perfect for a total beginner like me."</p>
+            </div>
+            <div class="testimonial-card">
+              <div class="user-info">
+                <div class="avatar"><i class="ti ti-user"></i></div>
+                <h4>Priya K.</h4>
+              </div>
+              <p>"Great quality seeds and the guides actually make sense."</p>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <i class="ti ti-leaf"></i>
+            <span>GARDENS</span>
+          </a>
+          <p>
+            World class plant boxes for all plant lovers. Grow gardens rich &
+            lush right from home with ease.
+          </p>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 GARDENS Inc. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
