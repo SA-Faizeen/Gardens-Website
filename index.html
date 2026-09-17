@@ -8,16 +8,17 @@
     <script>
       (function () {
         const savedTheme = localStorage.getItem("theme");
-        const systemPrefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+        const theme = savedTheme || "system";
 
         document.documentElement.setAttribute("data-theme", theme);
-        document.documentElement.style.colorScheme = theme;
+
+        if (theme === "system") {
+          document.documentElement.style.colorScheme = "light dark";
+        } else {
+          document.documentElement.style.colorScheme = theme;
+        }
       })();
     </script>
-    <!-- Modern SVG Favicon -->
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
@@ -26,7 +27,7 @@
   </head>
   <body>
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
-
+    <!-- Navigation Bar Section -->
     <header>
       <nav class="container">
         <a href="#" class="logo">
@@ -39,6 +40,7 @@
             id="open-sidebar-button"
             onclick="openSidebar()"
             aria-label="open sidebar"
+            title="Open sidebar"
           >
             <i class="ti ti-menu-2"></i>
           </button>
@@ -49,6 +51,7 @@
                 id="close-sidebar-button"
                 onclick="closeSidebar()"
                 aria-label="close sidebar"
+                title="Close sidebar"
               >
                 <i class="ti ti-x"></i>
               </button>
@@ -63,9 +66,9 @@
           <button
             id="theme-toggle"
             onclick="toggleTheme()"
-            aria-label="Toggle dark mode"
+            aria-label="Toggle theme"
           >
-            <i class="ti ti-moon" id="theme-icon"></i>
+            <i class="ti ti-device-desktop" id="theme-icon"></i>
           </button>
         </div>
       </nav>
@@ -240,7 +243,7 @@
             <form class="contact-form" novalidate>
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name" />
+                <input type="text" id="name" placeholder="Your Name" title="Input your name"/>
                 <span id="nameError" class="error-text" hidden
                   >Please enter your name</span
                 >
@@ -248,7 +251,7 @@
 
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="hello@example.com" />
+                <input type="text" id="email" placeholder="hello@example.com" title="Input your email"/>
                 <span id="emailError" class="error-text" hidden
                   >Please enter a valid email address</span
                 >
@@ -260,6 +263,7 @@
                   id="message"
                   rows="4"
                   placeholder="Write your message here..."
+                  title="Input any queries or comments you might have"
                 ></textarea>
                 <span id="messageError" class="error-text" hidden
                   >Please enter a message</span
@@ -270,6 +274,7 @@
                 type="submit"
                 onclick="submitForm(event)"
                 class="btn btn-primary submit-btn"
+                title="Click to submit the form (you can also press the Enter key)"
               >
                 Send Message <i class="ti ti-send"></i>
               </button>
