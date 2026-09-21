@@ -35,10 +35,7 @@ function applyTheme(theme) {
       toggleButton.setAttribute("aria-label", "Theme: dark. Click to change.");
       toggleButton.setAttribute("title", "Theme: dark. Click to change.");
     } else if (theme === "system") {
-      toggleButton.setAttribute(
-        "aria-label",
-        "Theme: system. Click to change.",
-      );
+      toggleButton.setAttribute("aria-label", "Theme: system. Click to change.");
       toggleButton.setAttribute("title", "Theme: system. Click to change.");
     } else {
       toggleButton.setAttribute("aria-label", "Theme: light. Click to change.");
