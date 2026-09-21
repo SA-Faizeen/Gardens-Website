@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gardens - Grow Your Own Garden</title>
-    <link rel="shortcut icon" href="images/leaf.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/leaf.png" type="image/x-icon" />
     <script>
       (function () {
         const savedTheme = localStorage.getItem("theme");
@@ -20,8 +20,8 @@
       })();
     </script>
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -243,7 +243,13 @@
             <form class="contact-form" novalidate>
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your Name" title="Input your name"/>
+                <input
+                  class="contact-input"
+                  type="text"
+                  id="name"
+                  placeholder="Your Name"
+                  title="Input your name"
+                />
                 <span id="nameError" class="error-text" hidden
                   >Please enter your name</span
                 >
@@ -251,7 +257,13 @@
 
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="hello@example.com" title="Input your email"/>
+                <input
+                  class="contact-input"
+                  type="text"
+                  id="email"
+                  placeholder="hello@example.com"
+                  title="Input your email"
+                />
                 <span id="emailError" class="error-text" hidden
                   >Please enter a valid email address</span
                 >
@@ -260,6 +272,7 @@
               <div class="form-group">
                 <label for="message">Message</label>
                 <textarea
+                  class="contact-input" 
                   id="message"
                   rows="4"
                   placeholder="Write your message here..."

@@ -5,6 +5,7 @@ let messageInput = document.getElementById("message");
 let nameError = document.getElementById("nameError");
 let emailError = document.getElementById("emailError");
 let messageError = document.getElementById("messageError");
+const contactForm = document.querySelector("#contact-form");
 
 let errorTimeout = 3000;
 
@@ -35,7 +36,10 @@ function applyTheme(theme) {
       toggleButton.setAttribute("aria-label", "Theme: dark. Click to change.");
       toggleButton.setAttribute("title", "Theme: dark. Click to change.");
     } else if (theme === "system") {
-      toggleButton.setAttribute("aria-label", "Theme: system. Click to change.");
+      toggleButton.setAttribute(
+        "aria-label",
+        "Theme: system. Click to change.",
+      );
       toggleButton.setAttribute("title", "Theme: system. Click to change.");
     } else {
       toggleButton.setAttribute("aria-label", "Theme: light. Click to change.");
@@ -148,8 +152,7 @@ function submitForm(event) {
   }
 }
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    submitForm();
-  }
+
+contactForm.addEventListener("submit", (event) => {
+  submitForm();
 });
