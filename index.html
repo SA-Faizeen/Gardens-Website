@@ -5,25 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gardens - Grow Your Own Garden</title>
     <link rel="shortcut icon" href="images/leaf.png" type="image/x-icon" />
-    <script>
-      (function () {
-        const savedTheme = localStorage.getItem("theme");
-        const theme = savedTheme || "system";
-
-        document.documentElement.setAttribute("data-theme", theme);
-
-        if (theme === "system") {
-          document.documentElement.style.colorScheme = "light dark";
-        } else {
-          document.documentElement.style.colorScheme = theme;
-        }
-      })();
-    </script>
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
@@ -259,7 +246,7 @@
                 <label for="email">Email</label>
                 <input
                   class="contact-input"
-                  type="text"
+                  type="email"
                   id="email"
                   placeholder="hello@example.com"
                   title="Input your email"
@@ -376,7 +363,5 @@
         </div>
       </div>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>
