@@ -6,11 +6,25 @@
     <title>Gardens - Grow Your Own Garden</title>
     <link rel="shortcut icon" href="images/leaf.png" type="image/x-icon" />
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
     />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const theme = savedTheme || "system";
+
+        document.documentElement.setAttribute("data-theme", theme);
+
+        if (theme === "system") {
+          document.documentElement.style.colorScheme = "light dark";
+        } else {
+          document.documentElement.style.colorScheme = theme;
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
@@ -259,7 +273,7 @@
               <div class="form-group">
                 <label for="message">Message</label>
                 <textarea
-                  class="contact-input" 
+                  class="contact-input"
                   id="message"
                   rows="4"
                   placeholder="Write your message here..."
