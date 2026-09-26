@@ -9,7 +9,7 @@ const contactForm = document.querySelector(".contact-form");
 
 let errorTimeout = 3000;
 
-document.querySelectorAll("input").forEach((i) => {
+document.querySelectorAll(".contact-input").forEach((i) => {
   i.autocomplete = "off";
 });
 

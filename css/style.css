@@ -13,12 +13,18 @@
   --border-color: light-dark(#e5e7eb, rgba(255, 255, 255, 0.1));
   --nav-bg: light-dark(rgba(247, 247, 247, 0.35), rgba(30, 41, 59, 0.35));
   --nav-text: light-dark(#1f2937, #ffffff);
-  --hero-overlay: light-dark(linear-gradient(135deg,
-        rgba(247, 247, 247, 0.75),
-        rgba(220, 220, 220, 0.85)),
-      linear-gradient(135deg, rgba(22, 163, 74, 0.75), rgba(15, 23, 42, 0.85)));
-  --btn-sec-bg: light-dark(rgba(255, 255, 255, 0.65),
-      rgba(255, 255, 255, 0.15));
+  --hero-overlay: light-dark(
+    linear-gradient(
+      135deg,
+      rgba(247, 247, 247, 0.75),
+      rgba(220, 220, 220, 0.85)
+    ),
+    linear-gradient(135deg, rgba(22, 163, 74, 0.75), rgba(15, 23, 42, 0.85))
+  );
+  --btn-sec-bg: light-dark(
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.15)
+  );
   --btn-sec-text: light-dark(#272727, #ffffff);
   --btn-sec-border: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.4));
   --banner-bg: light-dark(rgba(126, 42, 12, 0.2), rgba(126, 42, 12, 0.35));
@@ -242,6 +248,13 @@ nav ul {
     filter: brightness(0.95);
     scale: 0.95;
   }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline-offset: 2px;
+    outline: 2px solid var(--brand-color);
+  }
 }
 
 .btn-primary {
@@ -358,9 +371,15 @@ nav ul {
   color: #ffffff;
   padding: 0.6rem 1.8rem;
   white-space: nowrap;
-
   &:hover {
     background-color: #c2410c;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline-offset: 2px;
+    outline: 2px solid #ea580c;
   }
 }
 
@@ -638,7 +657,9 @@ footer {
       padding: 1em 1.5em;
       width: 100%;
       color: var(--text-primary);
-      transition: background-color 200ms, color 200ms;
+      transition:
+        background-color 200ms,
+        color 200ms;
 
       &:hover {
         color: var(--brand-color);
