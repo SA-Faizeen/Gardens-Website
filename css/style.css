@@ -467,6 +467,13 @@ nav ul {
       border-color: var(--brand-color);
     }
   }
+  
+  textarea {
+    field-sizing: content;
+    min-height: 6lh;
+    max-height: 10lh;
+    resize: none;
+  }
 }
 
 .submit-btn {
