@@ -63,7 +63,13 @@ html[data-theme="dark"] {
 html {
   font-family: "Poppins", "Segoe UI", sans-serif;
   color: var(--text-primary);
-  scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+:target {
+  scroll-margin-block: 10vb;
 }
 
 ul,
@@ -616,6 +622,12 @@ footer {
 
 .mobile-only {
   display: none;
+}
+
+@media screen and (max-width: 438px) {
+  .btn {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 800px) {
