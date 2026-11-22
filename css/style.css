@@ -3,31 +3,31 @@
 :root {
   /* Enables native browser dark mode support for light-dark() */
   color-scheme: light dark;
-  --bg-primary: light-dark(#ffffff, #1e293b);
-  --bg-alt: light-dark(#f7f7f7, #0f172a);
-  --card-bg: light-dark(#ffffff, #1e293b);
-  --text-primary: light-dark(#272727, #ffffff);
-  --text-muted: light-dark(#6b7280, #94a3b8);
-  --brand-color: light-dark(#22c55e, #4ade80);
-  --brand-color-dark: light-dark(#16a34a, #22c55e);
-  --border-color: light-dark(#e5e7eb, rgba(255, 255, 255, 0.1));
-  --nav-bg: light-dark(rgba(247, 247, 247, 0.35), rgba(30, 41, 59, 0.35));
-  --nav-text: light-dark(#1f2937, #ffffff);
+  --bg-primary: light-dark(#f8f7f4, #0d1510);
+  --bg-alt: light-dark(#f0ede6, #131d16);
+  --card-bg: light-dark(#ffffff, #17241c);
+  --text-primary: light-dark(#151c13, #f0f4ed);
+  --text-muted: light-dark(#5c6b57, #9ab392);
+  --brand-color: light-dark(#33733d, #52cc65);
+  --brand-color-dark: light-dark(#26592f, #3ea64f);
+  --border-color: light-dark(#d6d3cc, rgba(82, 204, 101, 0.2));
+  --nav-bg: light-dark(rgba(248, 247, 244, 0.85), rgba(13, 21, 16, 0.85));
+  --nav-text: light-dark(#151c13, #f0f4ed);
   --hero-overlay: light-dark(
-    linear-gradient(135deg, rgba(247, 247, 247, 0.75), rgba(220, 220, 220, 0.85)),
-    linear-gradient(135deg, rgba(22, 163, 74, 0.75), rgba(15, 23, 42, 0.85))
+    linear-gradient(135deg, rgba(248, 247, 244, 0.78), rgba(220, 215, 205, 0.88)),
+    linear-gradient(135deg, rgba(20, 45, 25, 0.82), rgba(13, 21, 16, 0.92))
   );
   --btn-sec-bg: light-dark(
-    rgba(255, 255, 255, 0.65),
-    rgba(255, 255, 255, 0.15)
+    rgba(255, 255, 255, 0.75),
+    rgba(82, 204, 101, 0.1)
   );
-  --btn-sec-text: light-dark(#272727, #ffffff);
-  --btn-sec-border: light-dark(rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.4));
-  --banner-bg: light-dark(rgba(126, 42, 12, 0.2), rgba(126, 42, 12, 0.35));
-  --banner-border: light-dark(rgba(68, 19, 6, 0.3), rgba(255, 255, 255, 0.15));
-  --banner-text: light-dark(#000000, #ffffff);
-  --input-bg: light-dark(#ffffff, #1e293b);
-  --icon-bg: light-dark(#e6f4ea, rgba(255, 255, 255, 0.08));
+  --btn-sec-text: light-dark(#151c13, #f0f4ed);
+  --btn-sec-border: light-dark(rgba(51, 115, 61, 0.25), rgba(82, 204, 101, 0.35));
+  --banner-bg: light-dark(rgba(180, 80, 30, 0.10), rgba(210, 95, 35, 0.18));
+  --banner-border: light-dark(rgba(160, 70, 25, 0.22), rgba(210, 95, 35, 0.35));
+  --banner-text: light-dark(#151c13, #f0f4ed);
+  --input-bg: light-dark(#ffffff, #17241c);
+  --icon-bg: light-dark(#e4ede6, rgba(82, 204, 101, 0.12));
 }
 
 /* Force light or dark mode when toggling via dataset */
@@ -364,17 +364,17 @@ nav ul {
 }
 
 .btn-banner {
-  background-color: #ea580c;
+  background-color: #d25f23;
   color: #ffffff;
   padding: 0.6rem 1.8rem;
   white-space: nowrap;
   &:hover {
-    background-color: #c2410c;
+    background-color: #e66d2c;
   }
 
   &:focus-visible {
     outline-offset: 2px;
-    outline: 2px solid #ea580c;
+    outline: 2px solid #d25f23;
   }
 }
 
