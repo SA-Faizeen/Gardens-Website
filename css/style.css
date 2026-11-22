@@ -103,7 +103,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--nav-bg);
+  /* background: var(--nav-bg); */
   z-index: 50;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
